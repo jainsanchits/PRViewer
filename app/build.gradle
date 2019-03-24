@@ -55,6 +55,9 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$v.support"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.google.dagger:dagger:$v.dagger"
+    implementation "com.google.dagger:dagger-android-support:$v.dagger"
+    implementation "com.google.code.gson:gson:$v.gson"
+
 
     //kapt implementation
     kapt "com.google.dagger:dagger-compiler:$v.dagger"

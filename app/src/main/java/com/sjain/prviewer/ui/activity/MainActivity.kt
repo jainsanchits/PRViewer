@@ -1,7 +1,8 @@
-package com.sjain.prviewer
+package com.sjain.prviewer.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.sjain.prviewer.R
 
 class MainActivity : AppCompatActivity() {
 
