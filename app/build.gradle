@@ -6,6 +6,15 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion v.compileSdk
     buildToolsVersion v.buildTools
+
+    dataBinding {
+        enabled true
+    }
+
+    lintOptions {
+        lintConfig file('lint.xml')
+    }
+
     defaultConfig {
         applicationId "com.sjain.prviewer"
         minSdkVersion v.minSdk
