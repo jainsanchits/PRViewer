@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -24,6 +23,7 @@ android {
         versionName "1.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
+        javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
 
         buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
     }
@@ -50,18 +50,43 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //lib implementations
+    implementation "androidx.lifecycle:lifecycle-runtime:$v.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-extensions:$v.lifecycle"
     implementation "androidx.appcompat:appcompat:$v.appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$v.constraintLayout"
     implementation "androidx.legacy:legacy-support-v4:$v.support"
+    implementation "androidx.cardview:cardview:$v.support"
+    implementation "androidx.recyclerview:recyclerview:$v.support"
+    implementation "androidx.paging:paging-runtime:$v.lifecycle"
+    implementation "com.github.bumptech.glide:glide:$v.glide"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.google.dagger:dagger:$v.dagger"
     implementation "com.google.dagger:dagger-android-support:$v.dagger"
     implementation "com.google.code.gson:gson:$v.gson"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$v.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$v.retrofit"
+    implementation "com.squareup.retrofit2:retrofit:$v.retrofit"
+    implementation "com.squareup.okhttp3:okhttp:v.okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$v.okhttp"
+    implementation "com.uber.autodispose:autodispose:$v.autoDispose"
+    implementation "com.uber.autodispose:autodispose-android:$v.autoDispose"
+    implementation "com.uber.autodispose:autodispose-android-archcomponents:$v.autoDispose"
+    implementation "io.reactivex.rxjava2:rxjava:$v.rxjava"
+    implementation "io.reactivex.rxjava2:rxandroid:$v.rxandroid"
+
+    api 'com.google.guava:guava:24.1-android'
+
+    provided ("com.google.auto.factory:auto-factory:${v.autoFactory}") {
+        exclude(group: 'com.google.guava')
+    }
 
 
     //kapt implementation
     kapt "com.google.dagger:dagger-compiler:$v.dagger"
     kapt "com.google.dagger:dagger-android-processor:$v.dagger"
+    kapt "androidx.lifecycle:lifecycle-compiler:$v.lifecycle"
+    kapt "com.google.auto.factory:auto-factory:${v.autoFactory}"
+    kapt "com.github.bumptech.glide:compiler:$v.glide"
 
     //annotation Implementation
     annotationProcessor "com.google.dagger:dagger-compiler:$v.dagger"

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+                name="viewModel"
+                type="com.sjain.prviewer.ui.viewmodel.PullRequestListViewModel"/>
+    </data>
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:background="@color/app_background"
+            android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/pull_request_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingBottom="8dp"/>
+
+        <androidx.cardview.widget.CardView
+                android:layout_width="48dp"
+                android:layout_gravity="bottom|center_horizontal"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="8dp"
+                app:animateLoading="@{viewModel.isLoading}"
+                app:cardCornerRadius="24dp"
+                android:layout_marginBottom="20dp"
+                android:layout_height="48dp">
+            <ProgressBar
+                    android:layout_centerInParent="true"
+                    android:id="@+id/loader"
+                    android:layout_gravity="center"
+                    android:progressTint="@color/colorPrimary"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"/>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+</layout>
