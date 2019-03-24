@@ -24,6 +24,8 @@ android {
         versionName "1.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
+
+        buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
     }
 
     buildTypes {
@@ -47,10 +49,19 @@ kapt {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //sorted implementations
+    //lib implementations
     implementation "androidx.appcompat:appcompat:$v.appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$v.constraintLayout"
     implementation "androidx.legacy:legacy-support-v4:$v.support"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.dagger:dagger:$v.dagger"
+
+    //kapt implementation
+    kapt "com.google.dagger:dagger-compiler:$v.dagger"
+    kapt "com.google.dagger:dagger-android-processor:$v.dagger"
+
+    //annotation Implementation
+    annotationProcessor "com.google.dagger:dagger-compiler:$v.dagger"
+
 
 }
